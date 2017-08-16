@@ -1,0 +1,39 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    float sueldo,a;
+    cout<<"Ingresa tu sueldo actual \n";
+    cin >> sueldo;
+    if (sueldo>=0 && sueldo<=1000)
+    {
+        a=sueldo*.18;
+        cout<<"\nTu nuevo sueldo es : "<<sueldo+a;
+    }
+    else
+        if (sueldo>=1001 && sueldo<=1100)
+        {
+            a=sueldo*.15;
+            cout<<"\nTu nuevo sueldo es : "<<sueldo+a;
+        }
+        else
+            if (sueldo>=1101 && sueldo<=1200)
+            {
+                a=sueldo*.12;
+                cout<<"\nTu nuevo sueldo es : "<<sueldo+a;
+            }
+            else
+                if (sueldo>=1201 && sueldo<=1300)
+                {
+                    a=sueldo*.10;
+                    cout<<"\nTu nuevo sueldo es : "<<sueldo+a;
+                }
+                else
+                {
+                    a=sueldo*.08;
+                    cout<<"\nTu nuevo sueldo es : "<<sueldo+a;
+                }
+    return 0;
+}
