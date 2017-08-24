@@ -1,0 +1,63 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int x;
+    cout << "Escoje la opcion que desea realizar:\n 1.Numero primo  2.Factorial de un numero    3.Promedio  4.Salir \n";
+    cin >> x;
+    switch (x)
+    {
+    case 1:
+        {
+            int numero,a=0;
+            cout << "Dame el numero que quieres comprobar: \n";
+            cin >> numero;
+            for (int i=1;i<=numero;i++)
+            {
+                if (numero%i==0)
+                a++;
+            }
+            if (a==2)
+                cout << numero << " es primo ";
+            else
+                cout << numero << " no es primo ";
+        }
+        break;
+
+    case 2:
+        {
+            int numero,s=1;
+            cout << "Dame un numero: \n";
+            cin >> numero;
+            for (int i=1;i<=numero;i++)
+            {
+                s*=i;
+            }
+            cout << "El factorial de " << numero << " es " << s;
+        }
+        break;
+
+    case 3:
+        {
+            float calificacion,promedio,suma=0.0,i=0.0;
+            cout << "Dame las calificaciones: \n";
+            do
+            {
+                cin >> calificacion;
+                if (calificacion!=-1)
+                {
+                    suma+=calificacion;
+                    i++;
+                }
+            }
+            while (calificacion!=-1);
+            promedio=suma/i;
+            cout << "El primedio final es de " << promedio;
+        }
+        break;
+
+    }
+    return 0;
+}
