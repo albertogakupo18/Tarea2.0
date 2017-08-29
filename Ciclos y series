@@ -1,0 +1,46 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+    int x;
+    cout << "Escoje la opcion que quieras utilizar: 1.Encontrar el valor aproximado de e \n  2.Calcular el valor de una variable a una potencia  3.Salir \n";
+    cin >> x;
+    switch(x)
+    {
+    case 1:
+        {
+            float e=1.0,x,a=1.0;
+            cout << "Cuantas veces quieres repetir el ciclo:\n";
+            cin >> x;
+            for (int i=1;i<x;i++)
+            {
+                a*=i;
+                e+=1.0/a;
+            }
+            cout << "El valor mas aproximado es " << e;
+        }
+    break;
+
+    case 2:
+        {
+            float e=1.0,x,n,a=1.0;
+            cout << "Cuantas veces quieres repetir el ciclo: \n";
+            cin >> n;
+            cout << "Cuanto vale x: \n";
+            cin >> x;
+            for (int i=1;i<=n;i++)
+            {
+                a*=i;
+                e+=pow(x,i)/a;
+            }
+            cout << "El valor mas aproximado es " << e;
+        }
+    break;
+    case 0:
+        break;
+    }
+    return 0;
+}
