@@ -1,0 +1,110 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+int menu();
+int senox(int x,int n);
+int fac(int x);
+int cosx(int x,int n);
+int logn(int x,int n);
+
+int main()
+{
+    int m,n,x;
+    do
+    {
+        m=menu();
+        switch(m)
+        {
+        case 1:
+            cout << "Dame el valor de x \n";
+            cin >> x;
+            cout << "Cuantas veces quieres repetir el ciclo? \n";
+            cin >> n;
+            senox(x,n);
+            break;
+        case 2:
+            cout << "Dame el valor de x \n";
+            cin >> x;
+            cout << "Cuantas veces quieres repetir el ciclo? \n";
+            cin >> n;
+            cosx(x,n);
+            break;
+        case 3:
+            cout << "Dame el valor de x \n";
+            cin >> x;
+            cout << "Cuantas veces quieres repetir el ciclo? \n";
+            cin >> n;
+            logn(x,n);
+            break;
+        }
+    }
+    while(m!=0);
+    return 0;
+}
+int menu()
+{
+    int m;
+    cout << " MENU \n";
+    cout << "1. Calcular el Seno de X \n";
+    cout << "2. Calcular el Coseno de X \n";
+    cout << "3. Calcular el Logaritmo natural de X \n";
+    cout << "0. SALIR \n";
+    cin >> m;
+    return m;
+}
+int senox(int x,int n)
+{
+    double a=x,f;
+    int b=1;
+    for (int i=1;i<n;i++)
+    {
+        b+=2;
+        f=fac(b);
+        if (i%2==0)
+        {
+            a+=pow(x,b)/f;
+        }
+        else
+            a-=pow(x,b)/f;
+    }
+    cout << "El valor de seno es " << a << "\n";
+}
+int cosx(int x,int n)
+{
+    double a=1,f;
+    int b=0;
+    for (int i=1;i<n;i++)
+    {
+        b+=2;
+        f=fac(b);
+        if (i%2==0)
+        {
+            a+=pow(x,b)/f;
+        }
+        else
+            a-=pow(x,b)/f;
+    }
+    cout << "El valor de coseno es " << a << "\n";
+}
+int logn(int x,int n)
+{
+    float a,b,c;
+    for (int i=1;i<=n;i++)
+    {
+        b=(x-1)/x;
+        c=pow(b,i);
+        a+=((1/i)*c);
+    }
+    cout << "El logaritmo natural de x es " << a << "\n";
+}
+
+int fac(int x)
+{
+    double a=1;
+    for (int i=1;i<=x;i++)
+    {
+        a*=i;
+    }
+    return a;
+}
