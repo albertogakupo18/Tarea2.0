@@ -1,0 +1,79 @@
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+
+using namespace std;
+int menu();
+int lanzar();
+void histograma(int tam);
+
+int main()
+{
+    int m,s,a=0,c;
+    srand(time(NULL));
+    do
+    {
+        m=menu();
+        int veces[11]={0},caras[6]={0};
+        switch(m)
+        {
+        case 1:
+            for (int i=0;i<100;i++)
+            {
+                a=lanzar();
+                caras[a-1]++;
+            }
+            for(int k=1;k<=6;k++)
+            {
+                c=caras[k-1];
+                cout << "El numero " << k << " Salio " << caras[k-1] << " veces ";
+                histograma(c);
+                cout << endl;
+            }
+            break;
+        case 2:
+            for (int i=0;i<100;i+=2)
+            {
+                s=0;
+                for (int j=0;j<2;j++)
+                {
+                    a=lanzar();
+                    s+=a;
+                }
+                veces[s-2]++;
+            }
+            for (int k=0;k<=10;k++)
+            {
+                c=veces[k];
+                cout << "El numero " << k+2 << " salio " << veces[k] << " veces ";
+                histograma(c);
+                cout << endl;
+            }
+            break;
+        }
+    }
+    while (m!=0);
+    return 0;
+}
+int menu()
+{
+    int m;
+    cout << "   MENU    " << endl;
+    cout << " 1. 1 Dado " << endl << " 2. 2 Dados " << endl << " 0. Salir " << endl;
+    cin >> m;
+    return m;
+}
+int lanzar()
+{
+    int l;
+    l=1+rand()%6;
+    return l;
+}
+void histograma(int tam)
+{
+    for (int i=1;i<=tam;i++)
+    {
+        cout << "*";
+    }
+    cout << endl;
+}
