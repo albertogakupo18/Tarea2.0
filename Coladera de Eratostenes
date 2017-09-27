@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+void imprimir(int c[],int tam);
+
+int main()
+{
+    int c[1000]={0},a=0;
+    for (int i=0;i<1000;i++)
+        c[i]=1;
+    for (int i=2;i<1000;i++)
+    {
+        if (c[i]==1)
+        {
+            a=i*2;
+            while(a<1000)
+            {
+                c[a]=0;
+                a+=i;
+            }
+        }
+    }
+    imprimir(c,1000);
+    return 0;
+}
+void imprimir(int c[],int tam)
+{
+    for (int i=2;i<tam;i++)
+    {
+        if (c[i]==1)
+            cout << i << ",";
+    }
+}
