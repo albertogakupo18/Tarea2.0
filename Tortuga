@@ -1,0 +1,215 @@
+#include <iostream>
+
+using namespace std;
+int menu();
+void girarderecha(int &mirar);
+void girarizquierda(int &mirar);
+void avanzar(int &r,int &c,int pluma,int mirar,int avanze,int tablero[][20],int rt);
+void mostrartablero(int tablero[][20],int rt);
+
+int main()
+{
+    int m,pluma=0,mirar=2,r=0,c=0,avanze=0,tablero[20][20]={0};
+    do
+    {
+        m=menu();
+        switch(m)
+        {
+            case 1:
+                pluma=0;
+                break;
+            case 2:
+                pluma=1;
+                break;
+            case 3:
+                girarderecha(mirar);
+                break;
+            case 4:
+                girarizquierda(mirar);
+                break;
+            case 5:
+                cout << "Cuanto quiere avanzar " << endl;
+                cin >> avanze;
+                avanzar(r,c,pluma,mirar,avanze,tablero,20);
+                break;
+            case 6:
+                mostrartablero(tablero,20);
+                break;
+            case 7:
+                if (pluma==0)
+                {
+                    cout << "la tortuga esta en la posicion " << r << "," << c << " Mirando hacia " << mirar << " Con la pluma arriba " << endl;
+                }
+                else
+                    cout << "la tortuga esta en la posicion " << r << "," << c << " Mirando hacia " << mirar << " Con la pluma abajo " << endl;
+        }
+    }
+    while(m!=0);
+    return 0;
+}
+int menu()
+{
+    int m;
+    cout << "1. Pluma arriba" << endl
+        << "2. Pluma abajo " << endl
+        << "3. Girar a la derecha " << endl
+        << "4. Girar a la izquierda " << endl
+        << "5. Avanzar " << endl
+        << "6. Imprimir " << endl
+        << "7. Posicion de la tortuga " << endl
+        << "0. Salir " << endl;
+    cin >> m;
+    return m;
+}
+void girarderecha(int &mirar)
+{
+    switch(mirar)
+    {
+    case 2:
+        mirar=4;
+        break;
+    case 4:
+        mirar=8;
+        break;
+    case 8:
+        mirar=6;
+        break;
+    case 6:
+        mirar=2;
+        break;
+    }
+}
+void girarizquierda(int &mirar)
+{
+    switch(mirar)
+    {
+    case 2:
+        mirar=6;
+        break;
+    case 4:
+        mirar=2;
+        break;
+    case 8:
+        mirar=4;
+        break;
+    case 6:
+        mirar=8;
+        break;
+    }
+}
+void avanzar(int &r,int &c,int pluma,int mirar,int avanze,int tablero[][20],int rt)
+{
+    if (pluma=0)
+    {
+        switch(mirar)
+        {
+        case 2:
+            for (int a=0;a<=avanze;a++)
+            {
+                if (r<20)
+                {
+                    r++;
+                }
+            }
+            if(r>avanze)
+                r--;
+            break;
+        case 4:
+            for (int b=avanze;b>=0;b--)
+            {
+                if(c>=0)
+                {
+                    c--;
+                }
+                if (c<0)
+                c++;
+            }
+            break;
+        case 6:
+            for (int b=0;b<=avanze;b++)
+            {
+               if (c<20)
+                {
+                    c++;
+                }
+            }
+            if(c>avanze)
+                c--;
+            break;
+        case 8:
+            for (int a=avanze;a>=0;a--)
+            {
+                if(r>=0)
+                {
+                    r--;
+                }
+                if (r<0)
+                    r++;
+            }
+            break;
+        }
+    }
+    else
+        switch(mirar)
+        {
+        case 2:
+            for (int a=0;a<=avanze;a++)
+            {
+                if (r<20)
+                {
+                    tablero[r][c]=1;
+                    r++;
+                }
+            }
+            if(r>avanze)
+                r--;
+            break;
+        case 4:
+            for (int b=avanze;b>=0;b--)
+            {
+                if(c>=0)
+                {
+                    tablero[r][c]=1;
+                    c--;
+                }
+                if (c<0)
+                    c++;
+            }
+            break;
+        case 6:
+            for (int b=0;b<=avanze;b++)
+            {
+               if (c<20)
+                {
+                    tablero[r][c]=1;
+                    c++;
+                }
+            }
+            if(c>avanze)
+                c--;
+            break;
+        case 8:
+            for (int a=avanze;a>=0;a--)
+            {
+                if(r>=0)
+                {
+                    tablero[r][c]=1;
+                    r--;
+                }
+                if (r<0)
+                    r++;
+            }
+            break;
+        }
+}
+void mostrartablero(int tablero[][20],int rt)
+{
+    for (int r=0;r<rt;r++)
+    {
+        for (int c=0;c<20;c++)
+        {
+            cout << tablero[r][c] << "   ";
+        }
+        cout << endl;
+    }
+}
